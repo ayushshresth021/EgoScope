@@ -1,0 +1,56 @@
+signals:
+  episode_budget:
+    kind: constraint
+    field: null
+    support: direct
+    units: [episodes, episode_fraction]
+  avoid_idle:
+    kind: constraint_or_priority
+    field: stationary_ratio
+    support: direct
+    operators: ["<=", "less_than_or_equal", "minimize"]
+  valid_frames:
+    kind: constraint_or_priority
+    field: quality_valid_frame_ratio
+    support: direct
+  complete_trajectory:
+    kind: constraint_or_priority
+    field: quality_trajectory_completeness
+    support: direct
+  finite_pose:
+    kind: constraint_or_priority
+    field: quality_finite_pose_ratio
+    support: direct
+  temporal_validity:
+    kind: constraint_or_priority
+    field: quality_temporal_validity
+    support: direct
+  general_quality:
+    kind: priority
+    field: quality_score
+    support: direct_composite
+  reduce_redundancy:
+    kind: priority
+    field: z
+    metric: nearest_neighbor_cosine_similarity
+    support: proxy
+  visual_motion_coverage:
+    kind: priority
+    field: behavioral_region
+    support: proxy
+    limitation: >-
+      Behavioral coverage is approximated by unsupervised visual-motion
+      regions. These are not semantic robot skills.
+  motion_variety:
+    kind: priority
+    fields: [path_length, mean_speed, speed_std, direction_change_ratio]
+    support: proxy
+
+unsupported_concepts:
+  semantic_task: No validated task labels
+  object_identity: No validated object labels
+  environment_identity: No validated environment labels
+  recovery_event: No validated recovery labels
+  policy_improvement: No downstream policy evidence
+  customer_acceptance: No customer contract or acceptance criteria
+  invented_feature: Field is not in the signal registry

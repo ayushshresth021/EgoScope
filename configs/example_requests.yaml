@@ -1,0 +1,33 @@
+examples:
+  - id: balanced_30
+    label: Keep a balanced 30%
+    request: Keep 30% while balancing quality, visual-motion coverage, and redundancy.
+    request_type: select_subset
+  - id: idle_filter_20
+    label: 20 clips, skip idle
+    request: Keep 20 episodes and exclude trajectories with more than 25% stationary behavior.
+    request_type: select_subset
+  - id: min_coverage
+    label: Smallest set that still covers everything
+    request: Find the smallest subset that includes every discovered representation region.
+    request_type: find_minimum_subset
+  - id: compare_budgets
+    label: Is 30% better than 20%?
+    request: Compare keeping 20% versus 30%; explain what the additional episodes add.
+    request_type: compare_budgets
+  - id: compare_methods
+    label: Our ranking vs just dropping duplicates
+    request: Should this dataset use EgoSelect or dedup-only if coverage matters more than redundancy?
+    request_type: compare_methods
+  - id: strategy_stability
+    label: Which clips always get picked?
+    request: Which episodes are most consistently selected under balanced, quality-first, and coverage-first strategies?
+    request_type: test_strategy
+  - id: unsupported_drawer
+    label: Drawer-opening (we can't do this)
+    request: Select drawer-opening demonstrations.
+    request_type: unsupported_or_unknown
+  - id: unsupported_policy
+    label: Best for robot success (we can't do this)
+    request: Select the data that will maximize Diffusion Policy success.
+    request_type: unsupported_or_unknown

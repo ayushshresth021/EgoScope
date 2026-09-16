@@ -1,0 +1,52 @@
+:root {
+  --black: #0c0a07;
+  --black-line: #2a241a;
+  --black-panel: #13100b;
+  --cream: #ece5d8;
+  --cream-deep: #ddd3bf;
+  --cream-panel: #e4dccb;
+  --cream-bright: #f3eee5;
+  --hot: #c8501f;
+  --ink: #23201b;
+  --ink-faint: #9c9384;
+  --ink-soft: #7d7466;
+  --line: rgba(35, 32, 27, 0.12);
+  --line-2: rgba(35, 32, 27, 0.26);
+  --line-ink: #2a2318;
+  --line-ink-2: #4a4234;
+  --line-paper: #6e6450;
+  --orange: #cf5a22;
+  --orange-hot: #ff5a1f;
+  --orange-logo: #ff7e48;
+  --orange-soft: #e07a3e;
+  --paper: #efe9de;
+  --paper-2: #e7dfd0;
+  --paper-soft: #a39a88;
+  --danger: #8b2a16;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+  background: var(--cream);
+  color: var(--ink);
+}
+
+html {
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input {
+  font: inherit;
+}

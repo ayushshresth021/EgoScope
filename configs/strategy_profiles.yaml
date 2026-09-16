@@ -1,0 +1,29 @@
+profiles:
+  balanced:
+    quality: 0.35
+    coverage: 0.45
+    redundancy_penalty: 0.20
+  quality_first:
+    quality: 0.60
+    coverage: 0.25
+    redundancy_penalty: 0.15
+  coverage_first:
+    quality: 0.20
+    coverage: 0.65
+    redundancy_penalty: 0.15
+  dedup_first:
+    quality: 0.20
+    coverage: 0.25
+    redundancy_penalty: 0.55
+
+priority_levels:
+  low: 0
+  medium: 1
+  high: 2
+
+defaults:
+  random_seed: 42
+  number_of_regions: 6
+  random_seeds: [42, 43, 44, 45, 46]
+  tie_tolerance: 0.01
+  default_budget_fraction: 0.30
