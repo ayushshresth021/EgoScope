@@ -10,7 +10,7 @@ The demo ships 80 clips, so nothing extra needs to be downloaded.
 
 ## Demo
 
-![EgoScope demo](https://github.com/user-attachments/assets/8a6a6c61-61b0-4dcd-86e3-5e64cb338dc4)
+<video src="https://github.com/user-attachments/assets/8a6a6c61-61b0-4dcd-86e3-5e64cb338dc4" controls muted playsinline width="100%"></video>
 
 ## Flow
 
