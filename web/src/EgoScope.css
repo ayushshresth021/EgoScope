@@ -124,7 +124,8 @@
 
 .problem-row,
 .how,
-.measures {
+.measures,
+.sources {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
@@ -132,13 +133,20 @@
   padding: 0;
 }
 
+.sources {
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 12px;
+}
+
 .measures {
   grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 0;
 }
 
 .problem-row article,
 .how li,
-.measures article {
+.measures article,
+.sources article {
   margin: 0;
   padding: 16px;
   border: 1px solid var(--line-2);
@@ -148,7 +156,8 @@
 
 .problem-row h2,
 .how strong,
-.measures h2 {
+.measures h2,
+.sources h2 {
   display: block;
   margin: 0 0 8px;
   font-size: 16px;
@@ -157,7 +166,8 @@
 
 .problem-row p,
 .how span,
-.measures p {
+.measures p,
+.sources p {
   margin: 0;
   color: var(--ink-soft);
   font-size: 15px;
@@ -433,7 +443,8 @@ textarea {
   .canvas-wrap,
   .problem-row,
   .how,
-  .measures {
+  .measures,
+  .sources {
     grid-template-columns: 1fr;
   }
 }

@@ -379,7 +379,8 @@ export default function App() {
         <div id="score-layer" className="score-layer">
           <p className="score-formula">
             A clip ranks higher when the motion is clean, the behavior is still
-            rare in the keep-set, and it does not look like clips we already kept.
+            rare in the keep-set, and it does not sit next to clips we already
+            kept.
           </p>
           <dl>
             <div>
@@ -395,6 +396,11 @@ export default function App() {
               <dd>−{payload.meta.weights.gamma.toFixed(2)}</dd>
             </div>
           </dl>
+          <p className="score-sources">
+            Idle and recording quality come from arm pose the rig already
+            logged. Variety and near-copies compare a fingerprint from eight
+            RGB frames plus that motion.
+          </p>
         </div>
       ) : null}
 

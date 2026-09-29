@@ -36,6 +36,8 @@ The UI follows the same path: **Ask** posts `/api/scope`, **Check** lets you edi
 
 ## Ranking
 
+The scores are not computed by re-watching video at ranking time. Each clip already has arm-pose statistics from the capture rig (idle, speed, broken tracks) and a visual fingerprint from eight sampled RGB frames (DINOv2). Ranking reads that table.
+
 Each remaining clip $i$ gets a score against the current keep-set $S$:
 
 $$

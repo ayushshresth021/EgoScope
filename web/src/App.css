@@ -153,6 +153,15 @@
   color: var(--orange-logo);
 }
 
+.score-sources {
+  grid-column: 1 / -1;
+  margin: 0;
+  max-width: 78ch;
+  color: var(--ink-soft);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
 .slider-block {
   display: grid;
   gap: 10px;

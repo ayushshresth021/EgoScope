@@ -28,10 +28,9 @@ export function RequestPage({
       <p className="kicker">The problem</p>
       <h1>Most of this video should not be trained on.</h1>
       <p className="lede">
-        Robots learn from first-person footage, but hours of it are waiting,
+        Robots learn from Egocentric videos, but hours of it are waiting,
         repeats, and the same motion again. Training on all of it is slow
-        and expensive. Training on the wrong clips teaches the robot the
-        wrong habits.
+        and expensive.
       </p>
 
       <h2 className="kicker">What EgoScope does</h2>
@@ -39,51 +38,54 @@ export function RequestPage({
         You write what to keep. Every clip is scored on four measurements from
         the footage itself, then we keep a smaller set.
       </p>
+      <h2 className="kicker">Where the numbers come from</h2>
+      <div className="sources">
+        <article>
+          <h2>Arm pose</h2>
+          <p>
+            The capture rig already logs left and right 3D arm positions. Idle,
+            speed, and broken tracks come from that stream.
+          </p>
+        </article>
+        <article>
+          <h2>A few RGB frames</h2>
+          <p>
+            We sample eight frames and turn them into a compact visual
+            fingerprint. Nearby fingerprints count as near-copies.
+          </p>
+        </article>
+      </div>
       <div className="measures">
         <article>
           <h2>Waiting-around</h2>
           <p>
-            How much of the clip the camera is sitting still. We read this from
-            pose speed — if it barely moves, the clip is idle.
+            How often the arms barely move. If pose speed stays under about
+            2&nbsp;cm/s, that part of the clip is idle.
           </p>
         </article>
         <article>
           <h2>Clean motion</h2>
           <p>
-            Whether the recording looks usable. We score missing frames, broken
-            pose tracks, and whether any motion happened at all.
+            Whether frames decoded, the pose track is complete and finite, and
+            whether any arm motion happened at all.
           </p>
         </article>
         <article>
           <h2>Variety of motion</h2>
           <p>
             Whether this clip is a kind of movement we don't already have. We
-            group clips by how they look and move — not by task names — and
-            prefer groups that are still rare.
+            group clips by pose stats plus that fingerprint — not by task
+            names — and prefer groups that are still rare.
           </p>
         </article>
         <article>
           <h2>Repeats</h2>
           <p>
-            Whether this clip looks like one we already kept. We compare each
-            clip to its nearest neighbor; high similarity means a near-copy.
+            Whether this clip's fingerprint sits next to one we already kept.
+            High similarity means a near-copy.
           </p>
         </article>
       </div>
-      <ol className="how">
-        <li>
-          <strong>Ask</strong>
-          <span>Say how much to keep, and what to avoid.</span>
-        </li>
-        <li>
-          <strong>Check</strong>
-          <span>See which of those four apply to your request.</span>
-        </li>
-        <li>
-          <strong>Choose</strong>
-          <span>Get a keep-set, a comparison, and a why.</span>
-        </li>
-      </ol>
 
       <div className="work">
         <p className="kicker">Try it</p>
