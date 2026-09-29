@@ -505,6 +505,97 @@ export default function App() {
         </aside>
       </div>
 
+      <footer className="bottom">
+        <div className="compare-row">
+          <div className="modes" role="tablist" aria-label="Evaluation view">
+            <button
+              type="button"
+              role="tab"
+              aria-selected={!stress}
+              className={stress ? "mode" : "mode on"}
+              onClick={() => {
+                setStress(false);
+              }}
+            >
+              <span>This dataset</span>
+              <em>Keep {percent}%</em>
+            </button>
+            <button
+              type="button"
+              role="tab"
+              aria-selected={stress}
+              className={stress ? "mode on" : "mode"}
+              onClick={() => {
+                setStress(true);
+              }}
+            >
+              <span>With junk added</span>
+              <em>
+                {payload.stress.n_keep} keep · {payload.stress.n_injected} junk
+                clips
+              </em>
+            </button>
+          </div>
+          <div className="methods">
+            {compared.map((m, i) => (
+              <div
+                key={m.name}
+                className={m.name === "EgoSelect" ? "method ego" : "method"}
+              >
+                <div className="name" title={METHOD_HINT[m.name] ?? m.name}>
+                  {shortName(m.name)}
+                </div>
+                <div className={stress ? "nums kinds" : "nums"}>
+                  {stress ? (
+                    <>
+                      <div className="lead">
+                        <span>junk kept</span>
+                        <b className={bestInj[i] ? "best" : ""}>
+                          {m.corrupt_retained}/{m.corrupt_pool}
+                        </b>
+                      </div>
+                      <div>
+                        <span>duplicates</span>
+                        <b>{m.dup_retained}</b>
+                      </div>
+                      <div>
+                        <span>idle</span>
+                        <b>{m.idle_retained}</b>
+                      </div>
+                      <div>
+                        <span>overused type</span>
+                        <b>{m.over_retained}</b>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div>
+                        <span>variety</span>
+                        <b className={bestCov[i] ? "best" : ""}>
+                          {fmt(m.coverage)}
+                        </b>
+                      </div>
+                      <div>
+                        <span>quality</span>
+                        <b className={bestQual[i] ? "best" : ""}>
+                          {fmt(m.quality)}
+                        </b>
+                      </div>
+                      <div>
+                        <span>repeats</span>
+                        <b className={bestRed[i] ? "best" : ""}>
+                          {fmt(m.redundancy)}
+                        </b>
+                      </div>
+                    </>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <CoverageChart series={methodCurves} percent={percent} />
+      </footer>
     </div>
   );
 }
